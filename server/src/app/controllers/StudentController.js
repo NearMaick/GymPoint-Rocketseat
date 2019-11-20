@@ -6,6 +6,12 @@ class StudentController {
 
     const { name, email, age, weight, height } = req.body;
 
+    const checkEmail = await Student.findOne({ where: { email } });
+
+    if (checkEmail) {
+      return res.status(400).json({ error: 'Duplicated email' });
+    }
+
     const user = await Student.create({
       user_id: userId,
       name,
