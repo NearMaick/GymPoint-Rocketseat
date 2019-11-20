@@ -3,7 +3,6 @@ import Student from '../models/Student';
 class StudentController {
   async store(req, res) {
     const { userId } = req;
-
     const { name, email, age, weight, height } = req.body;
 
     const checkEmail = await Student.findOne({ where: { email } });
@@ -25,9 +24,19 @@ class StudentController {
   }
 
   async update(req, res) {
+    const { userId } = req;
+    const { name, email, age, weight, height } = req.body;
+
     const student = await Student.findByPk(req.params.id);
 
-    await student.update(req.body);
+    await student.update({
+      user_id: userId,
+      name,
+      email,
+      age,
+      weight,
+      height,
+    });
 
     return res.json(student);
   }
