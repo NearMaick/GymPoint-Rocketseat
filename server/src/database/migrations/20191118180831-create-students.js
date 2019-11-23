@@ -8,12 +8,9 @@ module.exports = {
         primaryKey: true,
       },
 
-      user_id: {
-        type: Sequelize.INTEGER,
-        references: { model: 'users', key: 'id' },
-        onUpdate: 'CASCADE',
-        onDelete: 'SET NULL',
-        allowNull: true,
+      is_active: {
+        type: Sequelize.BOOLEAN,
+        allowNull: false,
       },
 
       name: {
@@ -40,6 +37,14 @@ module.exports = {
       height: {
         type: Sequelize.FLOAT,
         allowNull: false,
+      },
+
+      user_id: {
+        type: Sequelize.INTEGER,
+        references: { model: 'users', key: 'id' },
+        onUpdate: 'CASCADE',
+        onDelete: 'SET NULL',
+        allowNull: true,
       },
 
       created_at: {

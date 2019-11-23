@@ -1,6 +1,4 @@
-import request from 'supertest';
 import bcrypt from 'bcryptjs';
-import app from '../../src/app';
 
 import User from '../../src/app/models/User';
 import truncate from '../util/truncate';

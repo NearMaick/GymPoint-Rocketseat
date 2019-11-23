@@ -24,8 +24,22 @@ class PlanController {
     return res.json(plan);
   }
 
-  async index(req, res) {
+  async delete(req, res) {
+    Plan.destroy({
+      where: {
+        id: req.params.id,
+      },
+    });
+
     return res.json({ ok: true });
+  }
+
+  async index(req, res) {
+    const plansList = await Plan.findAll({
+      attributes: ['title', 'duration', 'price'],
+    });
+
+    return res.json(plansList);
   }
 }
 

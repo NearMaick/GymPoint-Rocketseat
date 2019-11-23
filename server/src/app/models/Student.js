@@ -4,6 +4,7 @@ class Student extends Model {
   static init(sequelize) {
     super.init(
       {
+        is_active: Sequelize.BOOLEAN,
         name: Sequelize.STRING,
         email: Sequelize.STRING,
         age: Sequelize.INTEGER,
