@@ -1,14 +1,18 @@
 import React from 'react';
-import { Text } from 'react-native';
 
 import Background from '../../components/Background';
-
-// import { Container } from './styles';
+import { Container, Form, FormInput, SubmitButton } from './styles';
 
 export default function HelpOrder() {
   return (
     <Background>
-      <Text>Help Order</Text>
+      <Container>
+        <Form>
+          <FormInput icon="mail-outline" placeholder="Digite sua dúvida" />
+
+          <SubmitButton onPress={() => {}}>Enviar</SubmitButton>
+        </Form>
+      </Container>
     </Background>
   );
 }
