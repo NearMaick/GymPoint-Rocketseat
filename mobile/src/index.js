@@ -1,17 +1,20 @@
 import React from 'react';
+import { PersistGate } from 'redux-persist/integration/react';
 import { View } from 'react-native';
 
 import { Provider } from 'react-redux';
 
 import './config/ReactotronConfig';
 
-import { store } from './store';
+import { store, persistor } from './store';
 import Routes from './routes';
 
 export default function App() {
   return (
     <Provider store={store}>
-      <Routes />
+      <PersistGate persistor={persistor}>
+        <Routes />
+      </PersistGate>
     </Provider>
   );
 }

@@ -1,6 +1,6 @@
 const INITIAL_STATE = {};
 
-export default function student(state = INITIAL_STATE, action) {
+export default function helpOrder(state = INITIAL_STATE, action) {
   switch (action.type) {
     default:
       return state;
