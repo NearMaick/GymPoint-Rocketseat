@@ -19,9 +19,8 @@ routes.post('/students/:id/checkins', CheckinController.store);
 routes.post('/students/:id/help-orders', HelpStudentController.create);
 routes.get('/students/:id/help-orders', HelpStudentController.index);
 
-// routes.use(authMiddleware);
+routes.use(authMiddleware);
 
-routes.get('/student', StudentController.index);
 routes.post('/student', StudentController.store);
 routes.put('/student/:id', StudentController.update);
 
@@ -31,6 +30,8 @@ routes.delete('/plans/:id', PlanController.delete);
 routes.get('/plans', PlanController.index);
 
 routes.post('/registration', RegistrationController.store);
+routes.put('/registration', RegistrationController.update);
+routes.get('/registration', RegistrationController.index);
 
 routes.get('/students/:id/checkins', CheckinController.index);
 

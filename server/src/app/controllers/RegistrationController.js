@@ -1,21 +1,26 @@
-import { parseISO, differenceInCalendarDays } from 'date-fns';
+import { parseISO, addDays } from 'date-fns';
 import Registration from '../models/Registration';
 import Plan from '../models/Plan';
 
 class RegistrationController {
   async store(req, res) {
-    const { student_id, plan_id, start_date, end_date } = req.body;
+    const { student_id, plan_id, start_date } = req.body;
 
-    const { price } = await Plan.findByPk(plan_id);
+    const checkRegistration = await Registration.findOne({
+      where: { student_id },
+    });
 
-    const days = differenceInCalendarDays(
-      parseISO(end_date),
-      parseISO(start_date)
-    );
+    if (checkRegistration) {
+      return res
+        .status(400)
+        .json({ error: 'This registration already exists' });
+    }
 
-    const month = Math.trunc(days / 30);
+    const { duration, price } = await Plan.findByPk(plan_id);
 
-    const total = price * month;
+    const end_date = addDays(parseISO(start_date), duration);
+
+    const total = price * (duration / 30);
 
     const registration = await Registration.create({
       student_id,
@@ -29,26 +34,32 @@ class RegistrationController {
   }
 
   async update(req, res) {
-    const { userId } = req;
-    const { name, is_active, email, age, weight, height } = req.body;
+    const { student_id, plan_id, start_date } = req.body;
+    const registration = await Registration.findOne({
+      where: { student_id },
+    });
 
-    // const student = await Registration.findByPk(req.params.id);
+    const { duration, price } = await Plan.findByPk(plan_id);
 
-    // await student.update({
-    //   user_id: userId,
-    //   is_active,
-    //   name,
-    //   email,
-    //   age,
-    //   weight,
-    //   height,
-    // });
+    const end_date = addDays(parseISO(start_date), duration);
 
-    return res.json(student);
+    const total = price * (duration / 30);
+
+    await registration.update({
+      student_id,
+      plan_id,
+      start_date,
+      end_date,
+      price: total,
+    });
+
+    return res.json(registration);
   }
 
   async index(req, res) {
-    return res.json({ ok: true });
+    const studentsList = await Registration.findAll();
+
+    return res.json(studentsList);
   }
 }
 

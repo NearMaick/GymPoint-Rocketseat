@@ -31,7 +31,7 @@ class PlanController {
       },
     });
 
-    return res.json({ ok: true });
+    return res.json();
   }
 
   async index(req, res) {
