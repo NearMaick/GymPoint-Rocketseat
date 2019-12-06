@@ -1,6 +1,9 @@
 import { parseISO, addDays } from 'date-fns';
 import Registration from '../models/Registration';
 import Plan from '../models/Plan';
+import Student from '../models/Student';
+
+import Mail from '../../lib/Mail';
 
 class RegistrationController {
   async store(req, res) {
@@ -16,7 +19,9 @@ class RegistrationController {
         .json({ error: 'This registration already exists' });
     }
 
-    const { duration, price } = await Plan.findByPk(plan_id);
+    const { name, email } = await Student.findByPk(student_id);
+
+    const { duration, price, title } = await Plan.findByPk(plan_id);
 
     const end_date = addDays(parseISO(start_date), duration);
 
@@ -28,6 +33,17 @@ class RegistrationController {
       start_date,
       end_date,
       price: total,
+    });
+
+    await Mail.sendMail({
+      to: `${name} <${email}>`,
+      subject: 'Matrícula efetuada com sucesso',
+      text: `Parabéns ${name}, seja bem vindo a nossa academia.
+      Segue abaixo os dados da sua matrícula:
+        Plano: ${title}
+        Data de término: ${end_date}
+        Valor: ${total}
+      `,
     });
 
     return res.json(registration);
