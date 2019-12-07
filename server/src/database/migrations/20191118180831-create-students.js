@@ -8,11 +8,6 @@ module.exports = {
         primaryKey: true,
       },
 
-      is_active: {
-        type: Sequelize.BOOLEAN,
-        allowNull: false,
-      },
-
       name: {
         type: Sequelize.STRING,
         allowNull: false,

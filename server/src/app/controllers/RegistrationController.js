@@ -23,9 +23,9 @@ class RegistrationController {
 
     const { duration, price, title } = await Plan.findByPk(plan_id);
 
-    const end_date = addDays(parseISO(start_date), duration);
+    const end_date = addDays(parseISO(start_date), duration * 30);
 
-    const total = price * (duration / 30);
+    const total = price * duration;
 
     const registration = await Registration.create({
       student_id,
@@ -57,9 +57,9 @@ class RegistrationController {
 
     const { duration, price } = await Plan.findByPk(plan_id);
 
-    const end_date = addDays(parseISO(start_date), duration);
+    const end_date = addDays(parseISO(start_date), duration * 30);
 
-    const total = price * (duration / 30);
+    const total = price * duration;
 
     await registration.update({
       student_id,
@@ -73,9 +73,11 @@ class RegistrationController {
   }
 
   async index(req, res) {
-    const studentsList = await Registration.findAll();
+    const registrations = await Registration.findAll({
+      attributes: ['id', 'end_date', 'price', 'is_active'],
+    });
 
-    return res.json(studentsList);
+    return res.json(registrations);
   }
 }
 
