@@ -17,7 +17,7 @@ export function* signIn({ payload }) {
 
     yield put(signInSuccess(token, user));
 
-    history.push('/student');
+    history.push('/student/index');
   } catch (err) {
     yield put(signFailure());
   }

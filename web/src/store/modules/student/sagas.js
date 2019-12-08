@@ -1,6 +1,6 @@
 import { all, call, takeLatest } from 'redux-saga/effects';
 import api from '../../../services/api';
-import history from '../../../services/history';
+// import history from '../../../services/history';
 
 export function* registerStudent({ payload }) {
   const { name, email, age, weight, height } = payload;

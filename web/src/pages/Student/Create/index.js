@@ -4,7 +4,7 @@ import { Form, Input } from '@rocketseat/unform';
 
 import { Container } from './styles';
 
-import { registerStudentRequest } from '../../store/modules/student/actions';
+import { registerStudentRequest } from '~/store/modules/student/actions';
 
 export default function Student() {
   const dispatch = useDispatch();
@@ -15,6 +15,7 @@ export default function Student() {
 
   return (
     <Container>
+      <h1>StudentCreate</h1>
       <Form onSubmit={handleSubmit}>
         <Input name="name" placeholder="Nome completo" />
         <Input name="email" placeholder="Seu endereço de email" />
