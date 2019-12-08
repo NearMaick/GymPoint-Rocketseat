@@ -16,6 +16,9 @@ import RegistrationIndex from '~/pages/Registration/Index';
 import RegistrationCreate from '~/pages/Registration/Create';
 import RegistrationUpdate from '~/pages/Registration/Update';
 
+import HelpOrderIndex from '~/pages/HelpOrder/Index';
+import HelpOrderAnswer from '~/pages/HelpOrder/Answer';
+
 export default function Routes() {
   return (
     <Switch>
@@ -44,6 +47,9 @@ export default function Routes() {
         component={RegistrationUpdate}
         isPrivate
       />
+
+      <Route path="/help-order/index" component={HelpOrderIndex} isPrivate />
+      <Route path="/help-order/answer" component={HelpOrderAnswer} isPrivate />
     </Switch>
   );
 }
