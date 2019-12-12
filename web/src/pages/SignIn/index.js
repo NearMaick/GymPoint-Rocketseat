@@ -6,8 +6,6 @@ import { signInRequest } from '../../store/modules/auth/actions';
 
 import logo from '../../assets/logo.svg';
 
-import { Container } from './styles';
-
 export default function SignIn() {
   const dispatch = useDispatch();
   const loading = useSelector(state => state.auth.loading);
@@ -17,21 +15,20 @@ export default function SignIn() {
   }
 
   return (
-    <Container>
+    <>
       <img src={logo} alt="GymPoint" />
 
       <Form onSubmit={handleSubmit}>
-        <Input name="email" type="email" placeholder="Seu e-mail" />
-        <Input
-          name="password"
-          type="password"
-          placeholder="Sua senha secreta"
-        />
+        <label htmlFor="email">Seu e-mail</label>
+        <Input name="email" type="email" placeholder="example@email.com" />
+
+        <label htmlFor="password">Sua senha</label>
+        <Input name="password" type="password" placeholder="******" />
 
         <button type="submit">
           {loading ? 'Carregando' : 'Entrar no sistema'}
         </button>
       </Form>
-    </Container>
+    </>
   );
 }
