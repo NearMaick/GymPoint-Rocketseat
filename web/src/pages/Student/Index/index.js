@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Input } from '@rocketseat/unform';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { updateStudentRequest } from '~/store/modules/student/actions';
 
 import { Container } from './styles';
 import api from '~/services/api';
@@ -21,11 +23,19 @@ export default function Dashboard() {
     loadStudents();
   }, []);
 
+  const dispatch = useDispatch();
+  // console.tron.log(student);
+  function updateStudent(students) {
+    dispatch(updateStudentRequest(students));
+  }
+
   return (
     <Container>
       <div>
-        <button type="button">Cadastrar</button>
-        <Input name="text" type="text" placeholder="Buscar aluno" />
+        <Link to="/student/create">
+          <button type="button">Cadastrar</button>
+        </Link>
+        <Input name="text" type="text" placeholder="Buscar aluno" />{' '}
       </div>
 
       <table>
@@ -42,7 +52,19 @@ export default function Dashboard() {
             <td>{students.email}</td>
             <td>{students.age}</td>
             <td>
-              <a href="/student/update">editar</a>
+              <button
+                type="button"
+                onClick={() =>
+                  updateStudent({
+                    id: students.id,
+                    name: students.name,
+                    email: students.email,
+                    age: students.age,
+                  })
+                }
+              >
+                editar
+              </button>
             </td>
             <td>apagar</td>
           </tr>
