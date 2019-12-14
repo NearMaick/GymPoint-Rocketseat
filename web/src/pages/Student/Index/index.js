@@ -1,12 +1,33 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { Input } from '@rocketseat/unform';
 // import { Link } from 'react-router-dom';
 
-// import { Container } from './styles';
+import { Container } from './styles';
+import api from '~/services/api';
 
 export default function Dashboard() {
+  const [student, setStudent] = useState([]);
+
+  useEffect(() => {
+    async function loadStudents() {
+      const response = await api.get('student');
+
+      const data = response.data.map(students => ({
+        ...students,
+      }));
+
+      setStudent(data);
+    }
+    loadStudents();
+  }, []);
+
   return (
-    <>
-      <h1>StudentIndex</h1>
+    <Container>
+      <div>
+        <button type="button">Cadastrar</button>
+        <Input name="text" type="text" placeholder="Buscar aluno" />
+      </div>
+
       <table>
         <thead>
           <th>Nome</th>
@@ -15,22 +36,18 @@ export default function Dashboard() {
           <th />
           <th />
         </thead>
-        <tr>
-          <td>Maick Souza</td>
-          <td>maick_a_s@msn.com</td>
-          <td>25</td>
-          <td>editar</td>
-          <td>apagar</td>
-        </tr>
-
-        <tr>
-          <td>Enilda Jesus</td>
-          <td>enilda_jesus@msn.com</td>
-          <td>61</td>
-          <td>editar</td>
-          <td>apagar</td>
-        </tr>
+        {student.map(students => (
+          <tr key={students.id}>
+            <td>{students.name}</td>
+            <td>{students.email}</td>
+            <td>{students.age}</td>
+            <td>
+              <a href="/student/update">editar</a>
+            </td>
+            <td>apagar</td>
+          </tr>
+        ))}
       </table>
-    </>
+    </Container>
   );
 }
