@@ -6,10 +6,11 @@ import { Container } from './styles';
 import { updateStudentRequest } from '~/store/modules/student/actions';
 
 export default function Student() {
-  const { student } = useSelector(state => state.student);
   const dispatch = useDispatch();
+  const { student } = useSelector(state => state.student);
 
-  function handleSubmit({ name, email, age, weight, height }) {
+  function handleSubmit(name, email, age, weight, height) {
+    // console.tron.log(name, email, age, weight, height);
     dispatch(updateStudentRequest(name, email, age, weight, height));
   }
 
@@ -17,6 +18,7 @@ export default function Student() {
     <Container>
       <h1>StudentUpdate</h1>
       <Form initialData={student} onSubmit={handleSubmit}>
+        <Input name="id" type="hidden" readOnly />
         <Input name="name" placeholder="Seu Nome" />
         <Input name="email" placeholder="Seu endereço de email" />
         <Input name="age" placeholder="Idade" />

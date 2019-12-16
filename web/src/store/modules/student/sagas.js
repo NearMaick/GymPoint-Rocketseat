@@ -17,6 +17,16 @@ export function* registerStudent({ payload }) {
   // history.push('/');
 }
 
+export function* updateStudent({ payload }) {
+  const data = payload;
+  const { id } = payload;
+
+  const response = yield call(api.put, `student/${id}`, data);
+
+  console.tron.log(response);
+}
+
 export default all([
   takeLatest('@student/REGISTER_STUDENT_REQUEST', registerStudent),
+  takeLatest('@student/UPDATE_STUDENT_REQUEST', updateStudent),
 ]);

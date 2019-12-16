@@ -1,19 +1,20 @@
 import React, { useEffect, useState } from 'react';
-import { Input } from '@rocketseat/unform';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { updateStudentRequest } from '~/store/modules/student/actions';
+import { indexStudentRequest } from '~/store/modules/student/actions';
 
 import { Container } from './styles';
 import api from '~/services/api';
 
 export default function Dashboard() {
   const [student, setStudent] = useState([]);
+  const [query, setQuery] = useState('');
 
   useEffect(() => {
     async function loadStudents() {
-      const response = await api.get('student');
-
+      const response = await api.get('student', {
+        params: { q: `${query}` },
+      });
       const data = response.data.map(students => ({
         ...students,
       }));
@@ -21,12 +22,17 @@ export default function Dashboard() {
       setStudent(data);
     }
     loadStudents();
-  }, []);
+  }, [query]);
 
   const dispatch = useDispatch();
-  // console.tron.log(student);
+
   function updateStudent(students) {
-    dispatch(updateStudentRequest(students));
+    dispatch(indexStudentRequest(students));
+  }
+
+  async function handleSearch(event) {
+    const { value } = event.target;
+    setQuery(value);
   }
 
   return (
@@ -35,7 +41,12 @@ export default function Dashboard() {
         <Link to="/student/create">
           <button type="button">Cadastrar</button>
         </Link>
-        <Input name="text" type="text" placeholder="Buscar aluno" />{' '}
+        <input
+          name="text"
+          type="text"
+          placeholder="Buscar aluno"
+          onChange={handleSearch}
+        />
       </div>
 
       <table>
@@ -51,8 +62,11 @@ export default function Dashboard() {
             <td>{students.name}</td>
             <td>{students.email}</td>
             <td>{students.age}</td>
+            <td>{students.weight}</td>
+            <td>{students.height}</td>
             <td>
               <button
+                id="link"
                 type="button"
                 onClick={() =>
                   updateStudent({
@@ -60,6 +74,8 @@ export default function Dashboard() {
                     name: students.name,
                     email: students.email,
                     age: students.age,
+                    weight: students.weight,
+                    height: students.height,
                   })
                 }
               >
