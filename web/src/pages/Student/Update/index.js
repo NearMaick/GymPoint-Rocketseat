@@ -16,16 +16,24 @@ export default function Student() {
 
   return (
     <Container>
-      <h1>StudentUpdate</h1>
-      <Form initialData={student} onSubmit={handleSubmit}>
+      <div className="search">
+        <h1>Edição de aluno</h1>
+        <div className="title">
+          <button type="button">Voltar</button>
+          <button form="student" type="submit">
+            Salvar
+          </button>
+        </div>
+      </div>
+      <Form id="student" initialData={student} onSubmit={handleSubmit}>
         <Input name="id" type="hidden" readOnly />
         <Input name="name" placeholder="Seu Nome" />
         <Input name="email" placeholder="Seu endereço de email" />
-        <Input name="age" placeholder="Idade" />
-        <Input name="weight" placeholder="Peso" />
-        <Input name="height" placeholder="Altura" />
-
-        <button type="submit">Enviar dados</button>
+        <div>
+          <Input name="age" placeholder="Idade" />
+          <Input name="weight" placeholder="Peso" />
+          <Input name="height" placeholder="Altura" />
+        </div>
       </Form>
     </Container>
   );

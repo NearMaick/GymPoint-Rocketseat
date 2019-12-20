@@ -1,12 +1,19 @@
 import React from 'react';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-// import { Container } from './styles';
+import { Container } from './styles';
 
 export default function Dashboard() {
   return (
-    <>
-      <h1>PlansIndex</h1>
+    <Container>
+      <div className="search">
+        <h1>Gerenciando planos</h1>
+        <div className="title">
+          <Link to="">
+            <button type="button">Cadastrar</button>
+          </Link>
+        </div>
+      </div>
 
       <table>
         <thead>
@@ -16,22 +23,18 @@ export default function Dashboard() {
           <th />
           <th />
         </thead>
-        <tr>
-          <td>Ouro</td>
-          <td>1 mês</td>
-          <td>R$ 65,00</td>
-          <td>editar</td>
-          <td>apagar</td>
-        </tr>
-
-        <tr>
-          <td>Bronze</td>
-          <td>3 mês</td>
-          <td>R$ 95,00</td>
-          <td>editar</td>
-          <td>apagar</td>
-        </tr>
+        <tbody>
+          <tr>
+            <td>Ouro</td>
+            <td>1 mês</td>
+            <td>R$ 65,00</td>
+            <td className="actions">
+              <button className="updateButton">editar</button>
+              <button className="deleteButton">apagar</button>
+            </td>
+          </tr>
+        </tbody>
       </table>
-    </>
+    </Container>
   );
 }

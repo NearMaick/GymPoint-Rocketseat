@@ -37,16 +37,19 @@ export default function Dashboard() {
 
   return (
     <Container>
-      <div>
-        <Link to="/student/create">
-          <button type="button">Cadastrar</button>
-        </Link>
-        <input
-          name="text"
-          type="text"
-          placeholder="Buscar aluno"
-          onChange={handleSearch}
-        />
+      <div className="search">
+        <h1>Gerenciando alunos</h1>
+        <div className="title">
+          <Link to="/student/create">
+            <button type="button">Cadastrar</button>
+          </Link>
+          <input
+            name="text"
+            type="text"
+            placeholder="Buscar aluno"
+            onChange={handleSearch}
+          />
+        </div>
       </div>
 
       <table>
@@ -54,37 +57,41 @@ export default function Dashboard() {
           <th>Nome</th>
           <th>Email</th>
           <th>Idade</th>
-          <th />
-          <th />
+          <th>Peso</th>
+          <th>Altura</th>
         </thead>
-        {student.map(students => (
-          <tr key={students.id}>
-            <td>{students.name}</td>
-            <td>{students.email}</td>
-            <td>{students.age}</td>
-            <td>{students.weight}</td>
-            <td>{students.height}</td>
-            <td>
-              <button
-                id="link"
-                type="button"
-                onClick={() =>
-                  updateStudent({
-                    id: students.id,
-                    name: students.name,
-                    email: students.email,
-                    age: students.age,
-                    weight: students.weight,
-                    height: students.height,
-                  })
-                }
-              >
-                editar
-              </button>
-            </td>
-            <td>apagar</td>
-          </tr>
-        ))}
+        <tbody>
+          {student.map(students => (
+            <tr key={students.id}>
+              <td>{students.name}</td>
+              <td>{students.email}</td>
+              <td>{students.age}</td>
+              <td>{students.weight}</td>
+              <td>{students.height}</td>
+              <td className="actions">
+                <button
+                  className="updateButton"
+                  type="button"
+                  onClick={() =>
+                    updateStudent({
+                      id: students.id,
+                      name: students.name,
+                      email: students.email,
+                      age: students.age,
+                      weight: students.weight,
+                      height: students.height,
+                    })
+                  }
+                >
+                  editar
+                </button>
+                <button className="deleteButton" type="button">
+                  apagar
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
       </table>
     </Container>
   );

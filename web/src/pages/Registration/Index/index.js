@@ -1,13 +1,19 @@
 import React from 'react';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 // import { Container } from './styles';
 
 export default function Dashboard() {
   return (
     <>
-      <h1>RegistrationIndex</h1>
-
+      <div className="search">
+        <h1>Gerenciando matrículas</h1>
+        <div className="title">
+          <Link to="/student/create">
+            <button type="button">Cadastrar</button>
+          </Link>
+        </div>
+      </div>
       <table>
         <thead>
           <th>Aluno</th>

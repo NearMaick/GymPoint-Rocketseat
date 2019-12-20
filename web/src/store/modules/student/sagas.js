@@ -1,6 +1,6 @@
 import { all, call, takeLatest } from 'redux-saga/effects';
 import api from '../../../services/api';
-// import history from '../../../services/history';
+import history from '../../../services/history';
 
 export function* registerStudent({ payload }) {
   const { name, email, age, weight, height } = payload;
@@ -21,9 +21,11 @@ export function* updateStudent({ payload }) {
   const data = payload;
   const { id } = payload;
 
-  const response = yield call(api.put, `student/${id}`, data);
+  yield call(api.put, `student/${id}`, data);
 
-  console.tron.log(response);
+  console.tron.log('perfil atualizado com sucesso');
+
+  history.push('/student/index');
 }
 
 export default all([
