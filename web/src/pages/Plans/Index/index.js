@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { indexPlanRequest } from '~/store/modules/plan/actions';
+import {
+  indexPlanRequest,
+  removePlanRequest,
+} from '~/store/modules/plan/actions';
 
 import { Container } from './styles';
 
@@ -23,6 +26,18 @@ export default function Dashboard() {
   }, []);
 
   const dispatch = useDispatch();
+
+  function updatePlan(plans) {
+    dispatch(indexPlanRequest(plans));
+  }
+
+  function deletePlan(id) {
+    const r = window.confirm('Tem certeza?');
+
+    if (r) {
+      dispatch(removePlanRequest(id));
+    }
+  }
 
   return (
     <Container>
@@ -47,13 +62,32 @@ export default function Dashboard() {
         </thead>
         <tbody>
           {plan.map(plans => (
-            <tr key={plan.id}>
+            <tr key={plans.id}>
               <td>{plans.title}</td>
               <td>{plans.duration}</td>
               <td>{plans.price}</td>
               <td className="actions">
-                <button className="updateButton">editar</button>
-                <button className="deleteButton">apagar</button>
+                <button
+                  className="updateButton"
+                  type="button"
+                  onClick={() =>
+                    updatePlan({
+                      id: plans.id,
+                      title: plans.title,
+                      duration: plans.duration,
+                      price: plans.price,
+                    })
+                  }
+                >
+                  editar
+                </button>
+                <button
+                  className="deleteButton"
+                  type="button"
+                  onClick={() => deletePlan({ id: plans.id })}
+                >
+                  apagar
+                </button>
               </td>
             </tr>
           ))}

@@ -1,27 +1,25 @@
 import React from 'react';
-// import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Form, Input } from '@rocketseat/unform';
 
 import { Container } from './styles';
+import { updatePlanRequest } from '~/store/modules/plan/actions';
 
-// import { registerStudentRequest } from '~/store/modules/student/actions';
-
-export default function Student() {
-  // const dispatch = useDispatch();
-
-  function handleSubmit({ name, email, age, weight, height }) {
-    // dispatch(registerStudentRequest(name, email, age, weight, height));
+export default function Plans() {
+  const dispatch = useDispatch();
+  const { plan } = useSelector(state => state.plan);
+  console.tron.log(plan);
+  function handleSubmit(title, duration, price) {
+    dispatch(updatePlanRequest(title, duration, price));
   }
 
   return (
     <Container>
-      <h1>PlansUpdate</h1>
-      <Form onSubmit={handleSubmit}>
-        <Input name="name" placeholder="Nome completo" />
-        <Input name="email" placeholder="Seu endereço de email" />
-        <Input name="age" placeholder="Idade" />
-        <Input name="weight" placeholder="Peso" />
-        <Input name="height" placeholder="Altura" />
+      <Form initialData={plan} onSubmit={handleSubmit}>
+        <Input name="id" />
+        <Input name="title" />
+        <Input name="duration" />
+        <Input name="price" />
 
         <button type="submit">Enviar dados</button>
       </Form>

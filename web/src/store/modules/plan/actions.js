@@ -1,7 +1,7 @@
-export function registerStudentRequest(name, email, age, weight, height) {
+export function registerPlanRequest(title, duration, price) {
   return {
-    type: '@student/REGISTER_STUDENT_REQUEST',
-    payload: { name, email, age, weight, height },
+    type: '@plan/REGISTER_PLAN_REQUEST',
+    payload: { title, duration, price },
   };
 }
 
@@ -19,9 +19,9 @@ export function updatePlanRequest({ id, title, duration, price }) {
   };
 }
 
-export function removePlanRequest({ id }) {
+export function removePlanRequest(id) {
   return {
     type: '@plan/REMOVE_PLAN_REQUEST',
-    payload: { id },
+    payload: id,
   };
 }

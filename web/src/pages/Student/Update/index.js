@@ -8,7 +8,7 @@ import { updateStudentRequest } from '~/store/modules/student/actions';
 export default function Student() {
   const dispatch = useDispatch();
   const { student } = useSelector(state => state.student);
-
+  console.tron.log(student);
   function handleSubmit(name, email, age, weight, height) {
     // console.tron.log(name, email, age, weight, height);
     dispatch(updateStudentRequest(name, email, age, weight, height));

@@ -4,24 +4,23 @@ import { Form, Input } from '@rocketseat/unform';
 
 import { Container } from './styles';
 
-import { registerStudentRequest } from '~/store/modules/student/actions';
+import { registerPlanRequest } from '~/store/modules/plan/actions';
 
-export default function Student() {
+export default function Plans() {
   const dispatch = useDispatch();
 
-  function handleSubmit({ name, email, age, weight, height }) {
-    dispatch(registerStudentRequest(name, email, age, weight, height));
+  function handleSubmit({ title, duration, price }) {
+    dispatch(registerPlanRequest(title, duration, price));
   }
 
   return (
     <Container>
       <h1>PlansCreate</h1>
       <Form onSubmit={handleSubmit}>
-        <Input name="name" placeholder="Nome completo" />
-        <Input name="email" placeholder="Seu endereço de email" />
-        <Input name="age" placeholder="Idade" />
-        <Input name="weight" placeholder="Peso" />
-        <Input name="height" placeholder="Altura" />
+        <Input name="title" placeholder="Título" />
+        <Input name="duration" placeholder="Duração" />
+        <Input name="priceUnity" placeholder="Preço Mensal" />
+        <Input name="price" placeholder="Preço Total" />
 
         <button type="submit">Enviar dados</button>
       </Form>
