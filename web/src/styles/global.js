@@ -82,6 +82,9 @@ export default createGlobalStyle`
     border: 0;
     border-radius: 4px;
     font-size: 16px;
+  }
+
+  .btnPrimary {
 
     transition: background 0.2s;
 
@@ -122,8 +125,7 @@ export default createGlobalStyle`
   }
 
   .title {
-    margin-left: 120px;
-    /* padding-left: 50%; */
+    /* margin-left: 325px; */
     padding-left: 41%;
   }
 

@@ -28,6 +28,16 @@ export function* updateStudent({ payload }) {
   history.push('/student/index');
 }
 
+// export function* deleteStudent({ payload }) {
+//   const { id } = payload;
+
+//   yield call(
+//     api.delete({
+//       where: { id },
+//     })
+//   );
+// }
+
 export default all([
   takeLatest('@student/REGISTER_STUDENT_REQUEST', registerStudent),
   takeLatest('@student/UPDATE_STUDENT_REQUEST', updateStudent),

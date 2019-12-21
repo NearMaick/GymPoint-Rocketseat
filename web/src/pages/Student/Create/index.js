@@ -23,7 +23,9 @@ export default function Student() {
         <Input name="weight" placeholder="Peso" />
         <Input name="height" placeholder="Altura" />
 
-        <button type="submit">Enviar dados</button>
+        <button className="btnPrimary" type="submit">
+          Enviar dados
+        </button>
       </Form>
     </Container>
   );

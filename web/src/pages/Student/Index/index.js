@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { indexStudentRequest } from '~/store/modules/student/actions';
+import {
+  indexStudentRequest,
+  removeStudentRequest,
+} from '~/store/modules/student/actions';
 
 import { Container } from './styles';
 import api from '~/services/api';
@@ -41,7 +44,9 @@ export default function Dashboard() {
         <h1>Gerenciando alunos</h1>
         <div className="title">
           <Link to="/student/create">
-            <button type="button">Cadastrar</button>
+            <button className="btnPrimary" type="button">
+              Cadastrar
+            </button>
           </Link>
           <input
             name="text"
@@ -85,7 +90,13 @@ export default function Dashboard() {
                 >
                   editar
                 </button>
-                <button className="deleteButton" type="button">
+                <button
+                  className="deleteButton"
+                  onClick={() =>
+                    dispatch(removeStudentRequest({ id: students.id }))
+                  }
+                  type="button"
+                >
                   apagar
                 </button>
               </td>

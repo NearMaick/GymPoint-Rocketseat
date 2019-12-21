@@ -1,16 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-// import { Container } from './styles';
+import { Container } from './styles';
 
 export default function Dashboard() {
   return (
-    <>
+    <Container>
       <div className="search">
         <h1>Gerenciando matrículas</h1>
         <div className="title">
           <Link to="/student/create">
-            <button type="button">Cadastrar</button>
+            <button className="btnPrimary" type="button">
+              Cadastrar
+            </button>
           </Link>
         </div>
       </div>
@@ -24,30 +26,22 @@ export default function Dashboard() {
           <th />
           <th />
         </thead>
-        <tr>
-          <td>Maick Souza</td>
-          <td>Ouro</td>
-          <td>15 dezembro 2019</td>
-          <td>15 Janeiro de 2020</td>
-          <td>
-            <input type="checkbox" checked={false} />
-          </td>
-          <td>editar</td>
-          <td>apagar</td>
-        </tr>
-
-        <tr>
-          <td>Maick Souza</td>
-          <td>Ouro</td>
-          <td>15 dezembro 2019</td>
-          <td>15 Janeiro de 2020</td>
-          <td>
-            <input type="checkbox" checked={false} />
-          </td>
-          <td>editar</td>
-          <td>apagar</td>
-        </tr>
+        <tbody>
+          <tr>
+            <td>Maick Souza</td>
+            <td>Ouro</td>
+            <td>15 dezembro 2019</td>
+            <td>15 Janeiro de 2020</td>
+            <td>
+              <input type="checkbox" checked={false} />
+            </td>
+            <td className="actions">
+              <button className="updateButton">editar</button>
+              <button className="deleteButton">apagar</button>
+            </td>
+          </tr>
+        </tbody>
       </table>
-    </>
+    </Container>
   );
 }

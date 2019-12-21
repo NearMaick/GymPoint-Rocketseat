@@ -18,3 +18,10 @@ export function updateStudentRequest({ id, name, email, age, weight, height }) {
     payload: { id, name, email, age, weight, height },
   };
 }
+
+export function removeStudentRequest({ id }) {
+  return {
+    type: '@student/REMOVE_STUDENT_REQUEST',
+    payload: { id },
+  };
+}
