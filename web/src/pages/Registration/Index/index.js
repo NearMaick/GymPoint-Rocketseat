@@ -1,9 +1,46 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import {
+  indexRegistrationRequest,
+  removeRegistrationRequest,
+} from '~/store/modules/registration/actions';
 
 import { Container } from './styles';
 
-export default function Dashboard() {
+import api from '~/services/api';
+
+export default function Registration() {
+  const [registration, setRegistration] = useState([]);
+  let active;
+  useEffect(() => {
+    async function loadRegistration() {
+      const response = await api.get('registration');
+      const data = response.data.map(registrations => ({
+        active: registrations.is_active,
+        ...registrations,
+      }));
+
+      setRegistration(data);
+    }
+    loadRegistration();
+  }, []);
+
+  const dispatch = useDispatch();
+
+  function updateRegistration(plans) {
+    dispatch(indexRegistrationRequest(plans));
+  }
+
+  function deleteRegistration(id) {
+    const confirmDelete = window.confirm('Tem certeza?');
+
+    if (confirmDelete) {
+      dispatch(removeRegistrationRequest(id));
+    }
+  }
+  console.tron.log(active);
+
   return (
     <Container>
       <div className="search">
@@ -27,19 +64,23 @@ export default function Dashboard() {
           <th />
         </thead>
         <tbody>
-          <tr>
-            <td>Maick Souza</td>
-            <td>Ouro</td>
-            <td>15 dezembro 2019</td>
-            <td>15 Janeiro de 2020</td>
-            <td>
-              <input type="checkbox" checked={false} />
-            </td>
-            <td className="actions">
-              <button className="updateButton">editar</button>
-              <button className="deleteButton">apagar</button>
-            </td>
-          </tr>
+          {registration.map(registrations => (
+            <tr key={registrations.id}>
+              <td>{registrations.id}</td>
+              <td>Ouro</td>
+              <td>{registrations.start_date}</td>
+              <td>{registrations.end_date}</td>
+              <td align="center">{registrations.is_active ? 'SIM' : 'NÃO'}</td>
+              <td className="actions">
+                <button type="button" className="updateButton">
+                  editar
+                </button>
+                <button type="button" className="deleteButton">
+                  apagar
+                </button>
+              </td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </Container>

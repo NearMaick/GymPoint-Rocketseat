@@ -32,9 +32,9 @@ export default function Dashboard() {
   }
 
   function deletePlan(id) {
-    const r = window.confirm('Tem certeza?');
+    const confirmDelete = window.confirm('Tem certeza?');
 
-    if (r) {
+    if (confirmDelete) {
       dispatch(removePlanRequest(id));
     }
   }
