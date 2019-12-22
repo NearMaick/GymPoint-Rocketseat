@@ -78,7 +78,6 @@ class StudentController {
 
     await student.update({
       user_id: userId,
-      is_active,
       name,
       email,
       age,
@@ -92,8 +91,6 @@ class StudentController {
   async index(req, res) {
     const { q } = req.query;
     let students;
-
-    // students = await Student.findAll();
 
     if (q === '') {
       students = await Student.findAll();

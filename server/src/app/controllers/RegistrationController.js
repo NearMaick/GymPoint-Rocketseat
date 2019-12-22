@@ -72,6 +72,15 @@ class RegistrationController {
     return res.json(registration);
   }
 
+  async delete(req, res) {
+    Registration.destroy({
+      where: {
+        id: req.params.id,
+      },
+    });
+    return res.json();
+  }
+
   async index(req, res) {
     const registrations = await Registration.findAll({
       attributes: ['id', 'end_date', 'price', 'is_active'],
