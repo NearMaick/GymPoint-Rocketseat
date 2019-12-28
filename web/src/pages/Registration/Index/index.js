@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { parseISO, format } from 'date-fns';
 import {
   indexRegistrationRequest,
   removeRegistrationRequest,
@@ -12,17 +13,19 @@ import api from '~/services/api';
 
 export default function Registration() {
   const [registration, setRegistration] = useState([]);
-  let active;
+
   useEffect(() => {
     async function loadRegistration() {
       const response = await api.get('registration');
       const data = response.data.map(registrations => ({
-        active: registrations.is_active,
         ...registrations,
+        startDate: format(parseISO(registrations.start_date), 'dd/MM/yyyy'),
+        endDate: format(parseISO(registrations.end_date), 'dd/MM/yyyy'),
       }));
 
       setRegistration(data);
     }
+
     loadRegistration();
   }, []);
 
@@ -39,14 +42,14 @@ export default function Registration() {
       dispatch(removeRegistrationRequest(id));
     }
   }
-  console.tron.log(active);
+  // console.tron.log(active);
 
   return (
     <Container>
       <div className="search">
         <h1>Gerenciando matrículas</h1>
         <div className="title">
-          <Link to="/student/create">
+          <Link to="/registration/create">
             <button className="btnPrimary" type="button">
               Cadastrar
             </button>
@@ -66,10 +69,10 @@ export default function Registration() {
         <tbody>
           {registration.map(registrations => (
             <tr key={registrations.id}>
-              <td>{registrations.id}</td>
+              <td>{registrations.students.name}</td>
               <td>Ouro</td>
-              <td>{registrations.start_date}</td>
-              <td>{registrations.end_date}</td>
+              <td>{registrations.startDate}</td>
+              <td>{registrations.endDate}</td>
               <td align="center">{registrations.is_active ? 'SIM' : 'NÃO'}</td>
               <td className="actions">
                 <button type="button" className="updateButton">

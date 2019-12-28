@@ -1,23 +1,41 @@
 import React from 'react';
 // import { Link } from 'react-router-dom';
-
-// import { Container } from './styles';
+import { Form, Input } from '@rocketseat/unform';
+import Popup from 'reactjs-popup';
+import { Container } from './styles';
 
 export default function Dashboard() {
   return (
-    <>
-      <h1>AnswerIndex</h1>
+    <Container>
+      <h1>Pedidos de auxílio</h1>
 
       <table>
         <thead>
-          <th>Maick Souza</th>
+          <th>Aluno</th>
           <th />
         </thead>
         <tr>
-          <td>Ouro</td>
-          <td>responder</td>
+          <td>Maick Souza</td>
+          <td>
+            <Popup
+              trigger={
+                <button className="updateButton" type="button">
+                  responder
+                </button>
+              }
+              modal
+              closeOnDocumentClick
+            >
+              <h2> Pergunta do aluno </h2>
+              <p>
+                Olá pessoal! Como faço para ganhar massa muscular sem ganhar
+                peso?
+              </p>
+              <button type="button">responder</button>
+            </Popup>
+          </td>
         </tr>
       </table>
-    </>
+    </Container>
   );
 }
