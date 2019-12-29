@@ -5,7 +5,7 @@ import { startOfDay, format, addDays } from 'date-fns';
 import pt from 'date-fns/locale/pt';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import { Form, Input, Select as RocketSelect } from '@rocketseat/unform';
+import { Form, Input } from '@rocketseat/unform';
 
 import { Container } from './styles';
 
@@ -14,14 +14,24 @@ import { registerStudentRequest } from '~/store/modules/student/actions';
 import api from '~/services/api';
 
 export default function Student() {
-  const [price, setPrice] = useState();
-  const [month, setMonth] = useState();
-  const [plan, setPlan] = useState([]);
   const [student, setStudent] = useState([]);
+  const [plan, setPlan] = useState([]);
+
+  const [month, setMonth] = useState('');
   const [startDate, setStartDate] = useState(startOfDay(new Date()));
+
   const [endDate, setEndDate] = useState(
     format(startOfDay(new Date()), 'dd/MM/yyyy')
   );
+  const [showEndDate, setShowEndDate] = useState(
+    format(startOfDay(new Date()), 'dd/MM/yyyy')
+  );
+
+  const [price, setPrice] = useState('');
+
+  const [studentId, setStudentId] = useState();
+  const [planId, setPlanId] = useState();
+  const [initialDate, setInitialDate] = useState();
 
   useEffect(() => {
     async function loadPlans() {
@@ -46,20 +56,9 @@ export default function Student() {
     loadPlans();
     loadStudents();
   }, []);
-
-  const dispatch = useDispatch();
-
-  function handleSubmit({
-    optsStudent,
-    optsPlan,
-    initialDate,
-    end_date,
-    total,
-  }) {
-    // TODO
-    console.tron.log(optsStudent, optsPlan, initialDate, end_date, total);
-  }
-
+  /**
+   * Loading lists on inputs selects
+   */
   const optStudent = student.map(students => ({
     value: `${students.id}`,
     label: `${students.name}`,
@@ -71,16 +70,30 @@ export default function Student() {
     ...plans,
   }));
 
+  function getStudent(students) {
+    setStudentId(students.value);
+  }
+  // TODO configura plans
+
   function calcEndDate(date) {
     setStartDate(date);
-    setEndDate(format(addDays(date, month * 30), 'dd/MM/yyyy'));
+    setEndDate(format(addDays(date, month * 30), 'yyyy-MM-dd'));
+    setShowEndDate(format(addDays(date, month * 30), 'dd/MM/yyyy'));
+    setInitialDate(format(startDate, 'yyyy-MM-dd'));
   }
 
   function calcPrice(value) {
     setPrice(value.price * value.duration);
     setMonth(value.duration);
+    setPlanId(value.id);
+  }
+
+  const dispatch = useDispatch();
+
+  function handleSubmit({ stdId, plnId, initial_date, end_date, total }) {
     // TODO
-    console.tron.log(value);
+    end_date = endDate;
+    console.tron.log({ stdId, plnId, initial_date, end_date, total });
   }
 
   return (
@@ -92,7 +105,7 @@ export default function Student() {
           isSearchable
           options={optStudent}
           placeholder="Selecione..."
-          value={student.id}
+          onChange={value => getStudent(value)}
         />
         <div>
           <ReactSelect
@@ -110,7 +123,10 @@ export default function Student() {
             selected={startDate}
             value={this}
           />
-          <Input name="end_date" value={endDate} />
+          <Input type="hidden" name="stdId" value={studentId} />
+          <Input type="hidden" name="plnId" value={planId} />
+          <Input type="hidden" name="initial_date" value={initialDate} />
+          <Input name="end_date" value={showEndDate} />
           <Input name="total" value={price} />
         </div>
         <button type="submit">Enviar dados</button>
