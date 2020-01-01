@@ -9,7 +9,7 @@ import { Form, Input } from '@rocketseat/unform';
 
 import { Container } from './styles';
 
-import { registerStudentRequest } from '~/store/modules/student/actions';
+import { registerRegistrationRequest } from '~/store/modules/registration/actions';
 
 import api from '~/services/api';
 
@@ -31,7 +31,7 @@ export default function Student() {
 
   const [studentId, setStudentId] = useState();
   const [planId, setPlanId] = useState();
-  const [initialDate, setInitialDate] = useState();
+  const [initialDate, setInitialDate] = useState(new Date());
 
   useEffect(() => {
     async function loadPlans() {
@@ -55,7 +55,7 @@ export default function Student() {
     }
     loadPlans();
     loadStudents();
-  }, []);
+  }, [initialDate, startDate]);
   /**
    * Loading lists on inputs selects
    */
@@ -73,13 +73,12 @@ export default function Student() {
   function getStudent(students) {
     setStudentId(students.value);
   }
-  // TODO configura plans
 
   function calcEndDate(date) {
+    setInitialDate(format(date, 'yyyy-MM-dd'));
     setStartDate(date);
     setEndDate(format(addDays(date, month * 30), 'yyyy-MM-dd'));
     setShowEndDate(format(addDays(date, month * 30), 'dd/MM/yyyy'));
-    setInitialDate(format(startDate, 'yyyy-MM-dd'));
   }
 
   function calcPrice(value) {
@@ -91,9 +90,11 @@ export default function Student() {
   const dispatch = useDispatch();
 
   function handleSubmit({ stdId, plnId, initial_date, end_date, total }) {
-    // TODO
     end_date = endDate;
-    console.tron.log({ stdId, plnId, initial_date, end_date, total });
+    // TODO
+    dispatch(
+      registerRegistrationRequest(stdId, plnId, initial_date, end_date, total)
+    );
   }
 
   return (

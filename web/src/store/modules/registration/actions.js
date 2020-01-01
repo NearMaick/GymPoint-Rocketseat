@@ -1,7 +1,13 @@
-export function registerRegistrationRequest(title, duration, price) {
+export function registerRegistrationRequest(
+  student_id,
+  plan_id,
+  start_date,
+  end_date,
+  price
+) {
   return {
     type: '@registration/REGISTER_REGISTRATION_REQUEST',
-    payload: { title, duration, price },
+    payload: { student_id, plan_id, start_date, end_date, price },
   };
 }
 
