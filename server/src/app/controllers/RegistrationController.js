@@ -7,7 +7,7 @@ import Mail from '../../lib/Mail';
 
 class RegistrationController {
   async store(req, res) {
-    const { student_id, plan_id, start_date } = req.body;
+    const { student_id, plan_id, start_date, end_date, price } = req.body;
 
     const checkRegistration = await Registration.findOne({
       where: { student_id },
@@ -21,18 +21,14 @@ class RegistrationController {
 
     const { name, email } = await Student.findByPk(student_id);
 
-    const { duration, price, title } = await Plan.findByPk(plan_id);
-
-    const end_date = addDays(parseISO(start_date), duration * 30);
-
-    const total = price * duration;
+    const { title } = await Plan.findByPk(plan_id);
 
     const registration = await Registration.create({
       student_id,
       plan_id,
       start_date,
       end_date,
-      price: total,
+      price,
     });
 
     await Mail.sendMail({
@@ -42,7 +38,7 @@ class RegistrationController {
       Segue abaixo os dados da sua matrícula:
         Plano: ${title}
         Data de término: ${end_date}
-        Valor: ${total}
+        Valor: ${price}
       `,
     });
 
@@ -84,6 +80,13 @@ class RegistrationController {
   async index(req, res) {
     const registrations = await Registration.findAll({
       attributes: ['id', 'end_date', 'price', 'is_active'],
+      include: [
+        {
+          model: Student,
+          as: 'students',
+          attributes: ['id', 'name'],
+        },
+      ],
     });
 
     return res.json(registrations);

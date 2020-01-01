@@ -7,5 +7,6 @@
 To run this repository you must have docker installed and configured:
 
 ```
+docker run --name database -e POSTGRES_PASSWORD=docker -p 5432:5432 -d postgres
 yarn
 ```
