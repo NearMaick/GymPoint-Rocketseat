@@ -70,7 +70,7 @@ export default function Registration() {
           {registration.map(registrations => (
             <tr key={registrations.id}>
               <td>{registrations.students.name}</td>
-              <td>Ouro</td>
+              <td>{registrations.plans.title}</td>
               <td>{registrations.startDate}</td>
               <td>{registrations.endDate}</td>
               <td align="center">{registrations.is_active ? 'SIM' : 'NÃO'}</td>

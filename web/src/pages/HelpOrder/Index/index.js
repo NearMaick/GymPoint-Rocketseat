@@ -1,10 +1,23 @@
-import React from 'react';
-// import { Link } from 'react-router-dom';
-import { Form, Input } from '@rocketseat/unform';
-import Popup from 'reactjs-popup';
+import React, { useState, useEffect } from 'react';
+import Popup from '~/components/Popup';
 import { Container } from './styles';
 
+import api from '~/services/api';
+
 export default function Dashboard() {
+  const [helpOrder, setHelpOrder] = useState([]);
+
+  useEffect(() => {
+    async function loadHelpOrders() {
+      const response = await api.get('students/help-orders');
+      const data = response.data.map(helpOrders => ({
+        ...helpOrders,
+      }));
+      setHelpOrder(data);
+    }
+    loadHelpOrders();
+  }, []);
+
   return (
     <Container>
       <h1>Pedidos de auxílio</h1>
@@ -14,27 +27,14 @@ export default function Dashboard() {
           <th>Aluno</th>
           <th />
         </thead>
-        <tr>
-          <td>Maick Souza</td>
-          <td>
-            <Popup
-              trigger={
-                <button className="updateButton" type="button">
-                  responder
-                </button>
-              }
-              modal
-              closeOnDocumentClick
-            >
-              <h2> Pergunta do aluno </h2>
-              <p>
-                Olá pessoal! Como faço para ganhar massa muscular sem ganhar
-                peso?
-              </p>
-              <button type="button">responder</button>
-            </Popup>
-          </td>
-        </tr>
+        <tbody>
+          {helpOrder.map(helpOrders => (
+            <tr key={helpOrders.id}>
+              <td>{helpOrders.students.name}</td>
+              <Popup helpOrders={helpOrders} />
+            </tr>
+          ))}
+        </tbody>
       </table>
     </Container>
   );
