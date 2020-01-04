@@ -62,7 +62,7 @@ class StudentController {
     }
 
     const { userId } = req;
-    const { name, is_active, email, age, weight, height } = req.body;
+    const { name, email, age, weight, height } = req.body;
 
     const student = await Student.findByPk(req.params.id);
 

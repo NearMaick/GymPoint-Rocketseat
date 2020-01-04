@@ -33,6 +33,14 @@ class HelpAcademyController {
   async index(req, res) {
     const order = await HelpOrder.findAll({
       where: { answer: null },
+      attributes: ['id', 'question'],
+      include: [
+        {
+          model: Student,
+          as: 'students',
+          attributes: ['id', 'name'],
+        },
+      ],
     });
 
     return res.json(order);

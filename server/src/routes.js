@@ -9,6 +9,7 @@ import RegistrationController from './app/controllers/RegistrationController';
 import CheckinController from './app/controllers/CheckinController';
 import HelpStudentController from './app/controllers/HelpOrders/HelpStudentController';
 import HelpAcademyController from './app/controllers/HelpOrders/HelpAcademyController';
+import SignStudentController from './app/controllers/SignStudentController';
 
 const routes = new Router();
 
@@ -18,6 +19,9 @@ routes.post('/students/:id/checkins', CheckinController.store);
 
 routes.post('/students/:id/help-orders', HelpStudentController.create);
 routes.get('/students/:id/help-orders', HelpStudentController.index);
+
+routes.get('/sign-student/:id', SignStudentController.index);
+routes.get('/students/:id/checkins', CheckinController.index);
 
 routes.use(authMiddleware);
 
@@ -34,8 +38,6 @@ routes.post('/registration', RegistrationController.store);
 routes.put('/registration', RegistrationController.update);
 routes.get('/registration', RegistrationController.index);
 routes.delete('/registration/:id', RegistrationController.delete);
-
-routes.get('/students/:id/checkins', CheckinController.index);
 
 routes.get('/students/help-orders', HelpAcademyController.index);
 

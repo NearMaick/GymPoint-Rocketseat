@@ -86,6 +86,11 @@ class RegistrationController {
           as: 'students',
           attributes: ['id', 'name'],
         },
+        {
+          model: Plan,
+          as: 'plans',
+          attributes: ['id', 'title'],
+        },
       ],
     });
 
