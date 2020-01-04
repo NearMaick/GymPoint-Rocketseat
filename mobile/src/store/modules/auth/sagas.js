@@ -3,32 +3,29 @@ import { takeLatest, call, put, all } from 'redux-saga/effects';
 
 import api from '../../../services/api';
 
-import { signInSuccess, signFailure } from './actions';
+import { signSuccess, signFailure } from './actions';
 
-export function* signIn({ payload }) {
+export function* sign({ payload }) {
   try {
-    const { email, password } = payload;
+    const { id } = payload;
 
-    const response = yield call(api.post, 'sessions', {
-      email,
-      password,
+    const response = yield call(api.get, `/sign-student/${id}`, {
+      id,
     });
 
-    const { token, user } = response.data;
+    console.tron.log(response);
 
-    if (user.provider) {
-      Alert.alert(
-        'Erro de login',
-        'O usuário não pode ser prestador de serviços',
-      );
-      return;
-    }
-
-    api.defaults.headers.Authorization = `Bearer ${token}`;
+    // if (user.provider) {
+    //   Alert.alert(
+    //     'Erro de login',
+    //     'O usuário não pode ser prestador de serviços',
+    //   );
+    //   return;
+    // }
 
     // yield delay(3000);
 
-    yield put(signInSuccess(token, user));
+    yield put(signSuccess(id));
 
     //   history.push('/dashboard');
   } catch (err) {
@@ -64,7 +61,7 @@ export function* signUp({ payload }) {
 export function setToken({ payload }) {
   if (!payload) return;
 
-  const { token } = payload.auth;
+  const { id } = payload;
 
   if (token) {
     api.defaults.headers.Authorization = `Bearer ${token}`;
@@ -72,7 +69,7 @@ export function setToken({ payload }) {
 }
 
 export default all([
-  takeLatest('persist/REHYDRATE', setToken),
-  takeLatest('@auth/SIGN_IN_REQUEST', signIn),
+  // takeLatest('persist/REHYDRATE', setToken),
+  takeLatest('@auth/SIGN_REQUEST', sign),
   takeLatest('@auth/SIGN_UP_REQUEST', signUp),
 ]);
