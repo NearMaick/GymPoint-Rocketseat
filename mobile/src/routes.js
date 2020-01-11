@@ -14,7 +14,7 @@ export default (signedIn = false) =>
         }),
         App: createBottomTabNavigator({
           Checkins,
-          // HelpOrder,
+          HelpOrder,
         }),
       },
       {

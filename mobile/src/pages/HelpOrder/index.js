@@ -31,3 +31,7 @@ export default function HelpOrder() {
     </Background>
   );
 }
+
+HelpOrder.navigationOptions = {
+  tabBarLabel: 'Pedir ajuda',
+};
