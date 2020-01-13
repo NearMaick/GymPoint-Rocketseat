@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { helpOrderRequest } from '../../store/modules/helpOrder/actions';
+import { helpOrderRequest } from '../../../store/modules/helpOrder/actions';
 
-import Background from '../../components/Background';
+import Background from '../../../components/Background';
 import { Container, Form, FormInput, SubmitButton } from './styles';
 
-export default function HelpOrder() {
+export default function Request() {
   const dispatch = useDispatch();
 
   const [question, setQuestion] = useState('');
@@ -32,6 +32,6 @@ export default function HelpOrder() {
   );
 }
 
-HelpOrder.navigationOptions = {
+Request.navigationOptions = {
   tabBarLabel: 'Pedir ajuda',
 };
