@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { withNavigationFocus } from 'react-navigation';
 import { helpOrderRequest } from '../../../store/modules/helpOrder/actions';
 
 import api from '../../../services/api';
@@ -7,7 +8,7 @@ import api from '../../../services/api';
 import Background from '../../../components/Background';
 import { Container, Form, FormInput, SubmitButton, List, Text } from './styles';
 
-export default function ListOrders({ navigation }) {
+function ListOrders({ navigation, isFocused }) {
   const studentId = useSelector(state => state.auth.id);
 
   const [questions, setQuestions] = useState([]);
@@ -20,8 +21,10 @@ export default function ListOrders({ navigation }) {
   }
 
   useEffect(() => {
-    loadQuestions();
-  }, []);
+    if (isFocused) {
+      loadQuestions();
+    }
+  }, [isFocused]);
 
   function handleSubmit() {
     navigation.navigate('Request');
@@ -30,7 +33,7 @@ export default function ListOrders({ navigation }) {
   return (
     <Background>
       <Container>
-        <SubmitButton onPress={handleSubmit}>Check-in</SubmitButton>
+        <SubmitButton onPress={handleSubmit}>Pedir Auxilio</SubmitButton>
         <List
           data={questions}
           keyExtractor={item => String(item.id)}
@@ -46,3 +49,5 @@ export default function ListOrders({ navigation }) {
     </Background>
   );
 }
+
+export default withNavigationFocus(ListOrders);

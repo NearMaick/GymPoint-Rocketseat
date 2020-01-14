@@ -1,17 +1,32 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { Alert } from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
 import { helpOrderRequest } from '../../../store/modules/helpOrder/actions';
 
 import Background from '../../../components/Background';
 import { Container, Form, FormInput, SubmitButton } from './styles';
 
-export default function Request() {
+import api from '../../../services/api';
+
+export default function Request({ navigation }) {
+  const studentId = useSelector(state => state.auth.id);
+
   const dispatch = useDispatch();
 
-  const [question, setQuestion] = useState('');
+  const [question, setQuestion] = useState();
 
-  function handleSubmit() {
-    dispatch(helpOrderRequest(question));
+  async function handleSubmit() {
+    if (!question) {
+      Alert.alert('Erro na solicitação', 'É necessario digitar sua pergunta');
+    } else {
+      await api.post(`students/${studentId}/help-orders`, {
+        question,
+      });
+
+      Alert.alert('Sucesso', 'Solicitação feita com sucesso!');
+
+      navigation.goBack();
+    }
   }
 
   return (

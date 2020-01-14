@@ -1,7 +1,7 @@
-export function helpOrderRequest(question) {
+export function helpOrderRequest(question, studentId) {
   return {
     type: '@helpOrder/HELP_ORDER_REQUEST',
-    payload: { question },
+    payload: { question, studentId },
   };
 }
 
