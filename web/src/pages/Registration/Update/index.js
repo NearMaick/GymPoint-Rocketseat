@@ -6,7 +6,7 @@ import { useParams } from 'react-router-dom';
 import ReactSelect from 'react-select';
 
 import { Form, Input } from '@rocketseat/unform';
-import { startOfDay, format, addDays } from 'date-fns';
+import { startOfDay, format, addDays, addHours } from 'date-fns';
 import pt from 'date-fns/locale/pt';
 
 import api from '~/services/api';
@@ -17,6 +17,7 @@ import { Container } from './styles';
 export default function Student() {
   // const dispatch = useDispatch();
   const [registration, setRegistration] = useState({});
+  const [dateEnd, setDateEnd] = useState();
   const [plan, setPlan] = useState({});
   const [student, setStudent] = useState([]);
 
@@ -47,6 +48,8 @@ export default function Student() {
       });
 
       setRegistration(response.data);
+      setStartDate(new Date(response.data.start_date));
+      setShowEndDate(format(new Date(response.data.end_date), 'dd/MM/yyyy'));
       setPlan(response.data.plans);
       setStudent(response.data.students);
     }
@@ -78,6 +81,9 @@ export default function Student() {
     loadStudents();
     loadPlans();
   }, []); //eslint-disable-line
+
+  console.tron.log(startDate);
+  // console.tron.log(format(new Date(dateInit), 'yyyy-MM-dd'));
 
   const optStudent = students.map(std => ({
     value: `${std.id}`,
@@ -140,7 +146,7 @@ export default function Student() {
             selected={startDate}
             value={this}
           />
-          <Input name="end_date" placeholder="01/01/2020" value={showEndDate} />
+          <Input name="end_date" placeholder={dateEnd} value={showEndDate} />
           <Input name="total" placeholder="100" value={price} />
         </div>
         <button type="submit">Enviar dados</button>
