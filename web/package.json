@@ -2,6 +2,11 @@
   "name": "modulo09",
   "version": "0.1.0",
   "private": true,
+  "husky": {
+    "hooks": {
+      "pre-commit":"echo 'um teste'"
+    }
+  },
   "dependencies": {
     "@rocketseat/unform": "^1.6.1",
     "axios": "^0.19.0",
@@ -65,6 +70,7 @@
     "eslint-plugin-prettier": "^3.1.0",
     "eslint-plugin-react": "^7.14.2",
     "eslint-plugin-react-hooks": "^1.6.1",
+    "husky": "^4.2.1",
     "prettier": "^1.18.2",
     "react-app-rewired": "^2.1.3"
   }
