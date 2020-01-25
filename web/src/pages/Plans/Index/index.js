@@ -14,6 +14,8 @@ export default function Dashboard() {
   const [plan, setPlan] = useState([]);
 
   useEffect(() => {
+    document.title = 'GymPoint | Planos';
+
     async function loadPlans() {
       const response = await api.get('plans');
       const data = response.data.map(plans => ({

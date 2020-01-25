@@ -11,10 +11,10 @@ export function registerRegistrationRequest(
   };
 }
 
-export function indexRegistrationRequest({ id, title, duration, price }) {
+export function indexRegistrationRequest(id) {
   return {
     type: '@registration/INDEX_REGISTRATION_REQUEST',
-    payload: { id, title, duration, price },
+    payload: { id },
   };
 }
 

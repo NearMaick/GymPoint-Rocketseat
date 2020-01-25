@@ -15,8 +15,12 @@ export default function Registration() {
   const [registration, setRegistration] = useState([]);
 
   useEffect(() => {
+    document.title = 'GymPoint | Matrículas';
+
     async function loadRegistration() {
-      const response = await api.get('registration');
+      const response = await api.get('registration', {
+        params: { q: '' },
+      });
       const data = response.data.map(registrations => ({
         ...registrations,
         startDate: format(parseISO(registrations.start_date), 'dd/MM/yyyy'),
@@ -31,8 +35,8 @@ export default function Registration() {
 
   const dispatch = useDispatch();
 
-  function updateRegistration(plans) {
-    dispatch(indexRegistrationRequest(plans));
+  function updateRegistration(id) {
+    dispatch(indexRegistrationRequest(id));
   }
 
   function deleteRegistration(id) {
@@ -75,7 +79,11 @@ export default function Registration() {
               <td>{registrations.endDate}</td>
               <td align="center">{registrations.is_active ? 'SIM' : 'NÃO'}</td>
               <td className="actions">
-                <button type="button" className="updateButton">
+                <button
+                  type="button"
+                  className="updateButton"
+                  onClick={() => updateRegistration(registrations.id)}
+                >
                   editar
                 </button>
                 <button type="button" className="deleteButton">

@@ -30,7 +30,7 @@ export default function Routes() {
 
       <Route path="/plans/index" component={PlansIndex} isPrivate />
       <Route path="/plans/create" component={PlansCreate} isPrivate />
-      <Route path="/plans/update" component={PlansUpdate} isPrivate />
+      <Route path="/plans/update/" component={PlansUpdate} isPrivate />
 
       <Route
         path="/registration/index"
@@ -43,7 +43,7 @@ export default function Routes() {
         isPrivate
       />
       <Route
-        path="/registration/update"
+        path="/registration/update/:id"
         component={RegistrationUpdate}
         isPrivate
       />
