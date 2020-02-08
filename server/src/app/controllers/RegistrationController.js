@@ -78,21 +78,43 @@ class RegistrationController {
   }
 
   async index(req, res) {
-    const registrations = await Registration.findAll({
-      attributes: ['id', 'end_date', 'price', 'is_active'],
-      include: [
-        {
-          model: Student,
-          as: 'students',
-          attributes: ['id', 'name'],
-        },
-        {
-          model: Plan,
-          as: 'plans',
-          attributes: ['id', 'title'],
-        },
-      ],
-    });
+    const { q } = req.query;
+    let registrations;
+
+    if (q === '') {
+      registrations = await Registration.findAll({
+        attributes: ['id', 'price', 'is_active'],
+        include: [
+          {
+            model: Student,
+            as: 'students',
+            attributes: ['id', 'name'],
+          },
+          {
+            model: Plan,
+            as: 'plans',
+            attributes: ['id', 'title'],
+          },
+        ],
+      });
+    } else {
+      registrations = await Registration.findOne({
+        where: { id: q },
+        attributes: ['id', 'price', 'is_active'],
+        include: [
+          {
+            model: Student,
+            as: 'students',
+            attributes: ['id', 'name'],
+          },
+          {
+            model: Plan,
+            as: 'plans',
+            attributes: ['id', 'title'],
+          },
+        ],
+      });
+    }
 
     return res.json(registrations);
   }

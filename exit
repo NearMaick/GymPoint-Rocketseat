@@ -1,0 +1,342 @@
+[33mcommit 16fe204a9964ee4510d2ee2ca70a097c8b45610a[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: Maick Souza <maick_a_s@msn.com>
+Date:   Sat Jan 25 11:43:08 2020 -0300
+
+    feat: add commit setup
+
+[33mcommit 515424042f0fd3b78599bef7b909e03991f7dba7[m
+Author: Maick Souza <maick_a_s@msn.com>
+Date:   Sat Jan 25 11:20:34 2020 -0300
+
+    feat: add commit setup
+
+[33mcommit 5d4947a9c2b20be2827537953392855c13c2c6dc[m
+Author: Maick Souza <maick_a_s@msn.com>
+Date:   Sat Jan 25 11:00:37 2020 -0300
+
+    chore(web): UpdateRegistration #1
+
+[33mcommit 89f36a7b13989de2fbc14f09f2fe9a602e9369eb[m
+Author: Maick Souza <maick_a_s@msn.com>
+Date:   Sat Jan 25 10:48:29 2020 -0300
+
+    chore(mobile): UpdateRegistration #1
+
+[33mcommit ff7b3032e938fc535c0aa6297d7d20266dbbe6ba[m[33m ([m[1;31morigin/master[m[33m)[m
+Author: Maick Souza <maick_a_s@msn.com>
+Date:   Mon Jan 13 22:39:33 2020 -0300
+
+    chore(mobile): register HelpOrder
+
+[33mcommit b66385c667629e730237b21fd12e77609a5b302c[m
+Author: Maick Souza <maick_a_s@msn.com>
+Date:   Mon Jan 13 20:44:54 2020 -0300
+
+    chore(mobile): listing checkins #2
+
+[33mcommit 3c7eb800c9c05964c74c8c4ee59a4beea9e709d0[m
+Author: Maick Souza <maick_a_s@msn.com>
+Date:   Sat Jan 11 17:04:21 2020 -0300
+
+    chore(mobile): listing checkins
+
+[33mcommit 595a3549235b3ce9b8af65ff0b3601aaf7f3d1c9[m
+Author: Maick Souza <maick_a_s@msn.com>
+Date:   Fri Jan 3 22:42:35 2020 -0300
+
+    fix: API adjustment
+
+[33mcommit 6b8ead4fccb15d306faaaa3040dbc40513a83169[m
+Author: Maick Souza <maick_a_s@msn.com>
+Date:   Fri Jan 3 22:37:23 2020 -0300
+
+    chore: signStudent
+
+[33mcommit 6e906b2b921de87fabe37d6e39c1e1c958cd9f49[m
+Author: Maick Souza <maick_a_s@msn.com>
+Date:   Fri Jan 3 16:28:37 2020 -0300
+
+    chore: helpOrder registration
+
+[33mcommit 316fb669ce0a844f73f95d1c27c523fb1f088e06[m
+Author: Maick Souza <maick_a_s@msn.com>
+Date:   Wed Jan 1 15:13:07 2020 -0300
+
+    Fix: registrationController
+
+[33mcommit 1a456264ea471adfa6b367421b20d2b3adf818c5[m
+Author: Maick Souza <maick_a_s@msn.com>
+Date:   Wed Jan 1 15:11:54 2020 -0300
+
+    Chore: Create Registration
+
+[33mcommit e634e1bab26c9901f2607c1976768fa710944e94[m
+Author: Maick Souza <maick_a_s@msn.com>
+Date:   Sat Dec 28 21:14:28 2019 -0300
+
+    Feat: CreateRegistration Form
+
+[33mcommit 498b5ffc52e1da834ba3ea21702f22bad9be6780[m
+Merge: 652662e ca47957
+Author: Maick Souza <maick_a_s@msn.com>
+Date:   Sat Dec 28 17:05:30 2019 -0300
+
+    Merge branch 'master' of https://github.com/NearMaick/GymPoint-Rocketseat
+
+[33mcommit 652662ec89e058ae364add544c8726af5ee8fd22[m
+Author: Maick Souza <maick_a_s@msn.com>
+Date:   Sat Dec 28 17:02:16 2019 -0300
+
+    CreateRegistration Form
+
+[33mcommit ca47957e8ecc1059148e74a2781f26ee73d57a8d[m
+Author: Maick Souza <49838202+NearMaick@users.noreply.github.com>
+Date:   Sun Dec 22 23:02:09 2019 -0300
+
+    Update README.md
+
+[33mcommit f966cb0b1f5a407b913e45d7934bdbcfa45cc460[m
+Author: Maick Souza <49838202+NearMaick@users.noreply.github.com>
+Date:   Sun Dec 22 22:53:18 2019 -0300
+
+    Update README.md
+
+[33mcommit 98daa05aef7c4f362227bd74ec4942f10fe4edc1[m
+Author: Maick Souza <maick_a_s@msn.com>
+Date:   Sat Dec 21 22:23:27 2019 -0300
+
+    readme.md
+
+[33mcommit b6308edeeb8056680d3c193a77d7bd7b57688cd9[m
+Author: Maick Souza <maick_a_s@msn.com>
+Date:   Sat Dec 21 22:21:32 2019 -0300
+
+    readme.md
+
+[33mcommit bed0a7e240550453d8640be3458b0c5c5e5eddf5[m
+Author: Maick Souza <maick_a_s@msn.com>
+Date:   Sat Dec 21 22:15:10 2019 -0300
+
+    readme.md
+
+[33mcommit eee103834c2faf78fa0ed608dcbfee0a63aaf570[m
+Author: Maick Souza <maick_a_s@msn.com>
+Date:   Sat Dec 21 22:13:00 2019 -0300
+
+    readme.md
+
+[33mcommit 71ff6db9cb882fda7e39163f9370a883ce3edd75[m
+Author: Maick Souza <maick_a_s@msn.com>
+Date:   Sat Dec 21 22:11:20 2019 -0300
+
+    readme.md
+
+[33mcommit d1142185fc95026652fe6a6aa922bab117780109[m
+Author: Maick Souza <maick_a_s@msn.com>
+Date:   Sat Dec 21 21:47:35 2019 -0300
+
+    Fix: Web App Adjustment
+
+[33mcommit 71773db1dbf5dd7391ca663d3424aea6a8436492[m
+Author: Maick Souza <maick_a_s@msn.com>
+Date:   Sat Dec 21 21:45:18 2019 -0300
+
+    Chore: Index Registration #1
+
+[33mcommit 71c74a5405ca386334bdbcd0af32b187730d53bc[m
+Author: Maick Souza <maick_a_s@msn.com>
+Date:   Sat Dec 21 18:58:52 2019 -0300
+
+    Chore: CRUD Plans
+
+[33mcommit 0cec5bec55df79e62963de694dbc33a9d7a6d248[m
+Author: Maick Souza <maick_a_s@msn.com>
+Date:   Sat Dec 21 14:34:15 2019 -0300
+
+    Feat: Global Styling #2, Index Plans
+
+[33mcommit c8b19904c4127bd4e9600f7293f76c7149f50622[m
+Author: Maick Souza <maick_a_s@msn.com>
+Date:   Thu Dec 19 23:39:29 2019 -0300
+
+    Feat: Global styling #1
+
+[33mcommit 3be4219c54199f5a2b40436d4a1b40fe14323ce0[m
+Author: Maick Souza <maick_a_s@msn.com>
+Date:   Sun Dec 15 21:28:48 2019 -0300
+
+    Chore: Update Student
+
+[33mcommit 59c53a81f73a263423114fdec895b057579b4f8d[m
+Author: Maick Souza <maick_a_s@msn.com>
+Date:   Sun Dec 15 18:54:35 2019 -0300
+
+    Fix: Adaptaion to student searching
+
+[33mcommit 96bc3d4a582da71736a47bd5e3bc7c2728ac1225[m
+Author: Maick Souza <maick_a_s@msn.com>
+Date:   Sat Dec 14 20:05:19 2019 -0300
+
+    Chore: Perfoming updateStudent form
+
+[33mcommit ab35c200d39c3d594e434defbe46efcfdb1b87b6[m
+Author: Maick Souza <maick_a_s@msn.com>
+Date:   Sat Dec 14 16:33:17 2019 -0300
+
+    Chore: Listing students (perist auth)
+
+[33mcommit 261a6bde81e9b760885d21be758834c0c0dcca9b[m
+Author: Maick Souza <maick_a_s@msn.com>
+Date:   Thu Dec 12 08:57:39 2019 -0300
+
+    Chore: Structing tables
+
+[33mcommit 240a64ee46fe6b04ec3867239cbadcd877c19b04[m
+Author: Maick Souza <maick_a_s@msn.com>
+Date:   Thu Dec 12 08:12:59 2019 -0300
+
+    Chore: Styling SignIn
+
+[33mcommit 9f0966e9d88dd76a72a4c001e247a1c925e1fa25[m
+Author: Maick Souza <maick_a_s@msn.com>
+Date:   Sun Dec 8 17:34:03 2019 -0300
+
+    Chore: Linking pages
+
+[33mcommit 8c07369f773630cba998ca1b2dd53f10784a1d00[m
+Author: Maick Souza <maick_a_s@msn.com>
+Date:   Sun Dec 8 16:26:59 2019 -0300
+
+    Chore: Structured Pages
+
+[33mcommit aa2db1d22daa5da69d04d9bb9cac7c3a7cd625a8[m
+Author: Maick Souza <maick_a_s@msn.com>
+Date:   Sat Dec 7 16:13:06 2019 -0300
+
+    Chore: Persist authentication
+
+[33mcommit 36247fb2b690261bd62874fe88c3a07fa96c49d8[m
+Author: Maick Souza <maick_a_s@msn.com>
+Date:   Sat Dec 7 15:05:29 2019 -0300
+
+    Fix: some fixes for web app
+
+[33mcommit eafb9f55eea444a96ea5e5189b74fecb7cd17fc6[m
+Author: Maick Souza <maick_a_s@msn.com>
+Date:   Sat Dec 7 15:04:26 2019 -0300
+
+    Feat: authentication
+
+[33mcommit 71207738a32c9baad3be6ed27fb8206d4c5aaba8[m
+Author: Maick Souza <maick_a_s@msn.com>
+Date:   Thu Dec 5 22:38:55 2019 -0300
+
+    Feat: sending email
+
+[33mcommit 75279da4363174dc1932c7a983415d76ea12702f[m
+Author: Maick Souza <maick_a_s@msn.com>
+Date:   Wed Dec 4 01:34:10 2019 -0300
+
+    Chore: Schema validation
+
+[33mcommit 2b8d707321a71e2db707d9ee18ef94275250bd98[m
+Author: Maick Souza <maick_a_s@msn.com>
+Date:   Sun Dec 1 16:21:01 2019 -0300
+
+    Feat: HelpOrder Registration
+
+[33mcommit e6821070183d0a62f42d050f533a9c15a75100fe[m
+Author: Maick Souza <maick_a_s@msn.com>
+Date:   Sun Dec 1 15:45:11 2019 -0300
+
+    Fix: ReduxSaga setting
+
+[33mcommit 4596a9a52bfc7463490b3f59b828108d8f7ba9a5[m
+Author: Maick Souza <maick_a_s@msn.com>
+Date:   Sun Dec 1 15:10:39 2019 -0300
+
+    Fix: AsyncStorage setting
+
+[33mcommit 95e15c5f3e7c46b221193fd41a6c916da60c5893[m
+Author: Maick Souza <maick_a_s@msn.com>
+Date:   Sun Dec 1 14:54:17 2019 -0300
+
+    Fix: Android Native files
+
+[33mcommit b78dcf6228695eca468fab5a511a9faf6347b05d[m
+Author: Maick Souza <maick_a_s@msn.com>
+Date:   Sun Dec 1 14:21:53 2019 -0300
+
+    chore: Reactotron
+
+[33mcommit 3833cb7db65ab631e844d3ed769e3ed87377a7f5[m
+Author: Maick Souza <maick_a_s@msn.com>
+Date:   Sat Nov 30 20:53:24 2019 -0300
+
+    chore: HelpOrder View
+
+[33mcommit f463acb91f27dda8d28bb529b7efa69c6ce9aeea[m
+Author: Maick Souza <maick_a_s@msn.com>
+Date:   Sat Nov 30 16:24:39 2019 -0300
+
+    Initial settings
+
+[33mcommit b6795df932c7596b862c77536c4a9d4314c064f3[m
+Author: Maick Souza <maick_a_s@msn.com>
+Date:   Sat Nov 30 14:09:41 2019 -0300
+
+    Feat: HelpOrder
+
+[33mcommit ea59bc2dee7015b28e0d24bc61c461c0d7a423f7[m
+Author: Maick Souza <maick_a_s@msn.com>
+Date:   Tue Nov 26 22:57:59 2019 -0300
+
+    Feat: Student checkin
+
+[33mcommit 3ed209d597401599b47deb7de79adad143036ac7[m
+Author: Maick Souza <maick_a_s@msn.com>
+Date:   Sun Nov 24 17:22:09 2019 -0300
+
+    Feat: Student Registration
+
+[33mcommit e6a2da851689f5b4f25bc8173174d61ce21f6e37[m
+Author: Maick Souza <maick_a_s@msn.com>
+Date:   Sun Nov 24 15:25:12 2019 -0300
+
+    Chore: Redux
+
+[33mcommit ae1e7e533f17176d102b10203f48a9d8c3ddb6c6[m
+Author: Maick Souza <maick_a_s@msn.com>
+Date:   Sun Nov 24 14:32:47 2019 -0300
+
+    Chore: Pages
+
+[33mcommit 2473e31220fe6f398249d25808ca05d151f10dee[m
+Author: Maick Souza <maick_a_s@msn.com>
+Date:   Sat Nov 23 15:07:01 2019 -0300
+
+    Feat: Student Registration
+
+[33mcommit d64baf5a6e87df31b095c08e51edf63696eb456e[m
+Author: Maick Souza <maick_a_s@msn.com>
+Date:   Wed Nov 20 02:20:06 2019 -0300
+
+    Feat: Struct Database
+
+[33mcommit 08081237710254f64a3770134d80e6b2c6c08183[m
+Author: Maick Souza <maick_a_s@msn.com>
+Date:   Tue Nov 19 22:41:16 2019 -0300
+
+    test: test files
+
+[33mcommit 3121a9f8760363f1a1271d058837a4ff718e5e1d[m
+Author: Maick Souza <maick_a_s@msn.com>
+Date:   Tue Nov 19 22:37:19 2019 -0300
+
+    test: test files
+
+[33mcommit 28fd70ecd95a250dfe4f0b4f0489857cb0eacd1d[m
+Author: Maick Souza <maick_a_s@msn.com>
+Date:   Mon Nov 18 17:54:54 2019 -0300
+
+    initial commit
