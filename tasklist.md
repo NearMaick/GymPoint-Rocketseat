@@ -1,4 +1,4 @@
-- [ ] Configurar o commitzen nos 3 microsserviços
+- [X] Configurar o commitzen nos 3 microsserviços
 - [ ] Fazer schema validation no front web
 - [ ] Persistir os estados dos componentes Input que recebem dados para edição
 - [ ] Verificar o fluxo da aplicação, do front para o back
