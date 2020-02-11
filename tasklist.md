@@ -1,8 +1,9 @@
-- [] Fazer schema validation no front web
-- [] Persistir os estados dos componentes Input que recebem dados para edição
-- [] Verificar o fluxo da aplicação, do front para o back
-- [] Refatorar começando pelo back, mas sem quebrar o front
-- [] Realizar testes de integridade no back pelo Insomnia
-- [] Fazer os ajustes de validação no mobile
-- [] fazer toda a estilização do front
-- [] fazer toda a estilização do mobile
+- [ ] Configurar o commitzen nos 3 microsserviços
+- [ ] Fazer schema validation no front web
+- [ ] Persistir os estados dos componentes Input que recebem dados para edição
+- [ ] Verificar o fluxo da aplicação, do front para o back
+- [ ] Refatorar começando pelo back, mas sem quebrar o front
+- [ ] Realizar testes de integridade no back pelo Insomnia
+- [ ] Fazer os ajustes de validação no mobile
+- [ ] fazer toda a estilização do front
+- [ ] fazer toda a estilização do mobile
