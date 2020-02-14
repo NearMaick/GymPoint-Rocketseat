@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
+
+import api from '~/services/api';
 import {
   indexStudentRequest,
   removeStudentRequest,
 } from '~/store/modules/student/actions';
 
 import { Container } from './styles';
-import api from '~/services/api';
 
 export default function Dashboard() {
   const [student, setStudent] = useState([]);

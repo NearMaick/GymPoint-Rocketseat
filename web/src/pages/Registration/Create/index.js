@@ -1,17 +1,29 @@
 import React, { useEffect, useState } from 'react';
+import DatePicker from 'react-datepicker';
 import { useDispatch } from 'react-redux';
 import ReactSelect from 'react-select';
-import { startOfDay, format, addDays } from 'date-fns';
-import pt from 'date-fns/locale/pt';
-import DatePicker from 'react-datepicker';
+
 import 'react-datepicker/dist/react-datepicker.css';
 import { Form, Input } from '@rocketseat/unform';
+import { startOfDay, format, addDays } from 'date-fns';
+import pt from 'date-fns/locale/pt';
+import * as Yup from 'yup';
+
+import api from '~/services/api';
+import { registerRegistrationRequest } from '~/store/modules/registration/actions';
 
 import { Container } from './styles';
 
-import { registerRegistrationRequest } from '~/store/modules/registration/actions';
-
-import api from '~/services/api';
+const schema = Yup.object().shape({
+  optsStudent: Yup.string(),
+  optsPlan: Yup.string(),
+  initialDate: Yup.date(),
+  stdId: Yup.number(),
+  plnId: Yup.number(),
+  initial_date: Yup.date(),
+  end_date: Yup.string(),
+  total: Yup.number(),
+});
 
 export default function Student() {
   const [student, setStudent] = useState([]);
@@ -100,7 +112,7 @@ export default function Student() {
   return (
     <Container>
       <h1>Cadastro de Matrícula</h1>
-      <Form onSubmit={handleSubmit}>
+      <Form schema={schema} onSubmit={handleSubmit}>
         <ReactSelect
           name="optsStudent"
           isSearchable

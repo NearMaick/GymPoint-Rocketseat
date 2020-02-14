@@ -1,11 +1,17 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
-
 import { useDispatch } from 'react-redux';
-import { Form, Input } from '@rocketseat/unform';
 import ReactPopup from 'reactjs-popup';
 
+import { Form, Input } from '@rocketseat/unform';
+import PropTypes from 'prop-types';
+import * as Yup from 'yup';
+
 import { registerHelpOrderRequest } from '~/store/modules/helpOrder/actions';
+
+const schema = Yup.object().shape({
+  id: Yup.number(),
+  answer: Yup.string().required('Nome é obrigatório'),
+});
 
 export default function Popup({ helpOrders }) {
   const [open, setOpen] = useState(false);
@@ -19,7 +25,7 @@ export default function Popup({ helpOrders }) {
     <>
       <td>
         <ReactPopup onClose={() => setOpen(false)} open={open} modal>
-          <Form onSubmit={handleSubmit}>
+          <Form schema={schema} onSubmit={handleSubmit}>
             <Input type="hidden" name="id" value={helpOrders.id} />
             <div className="modal">
               <div className="order">
