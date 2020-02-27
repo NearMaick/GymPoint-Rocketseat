@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 
 import { Form } from '@unform/web';
 import { startOfDay, format, addDays } from 'date-fns';
@@ -8,6 +9,7 @@ import DatePicker from '~/components/Form/DatePicker';
 import Input from '~/components/Form/Input';
 import Select from '~/components/Form/Select';
 import api from '~/services/api';
+import { registerRegistrationRequest } from '~/store/modules/registration/actions';
 
 import { Container } from './styles';
 
@@ -22,6 +24,7 @@ export default function Student() {
   const [price, setPrice] = useState('');
 
   const [startDate, setStartDate] = useState(startOfDay(new Date()));
+  const [endDate, setEndDate] = useState(startOfDay(new Date()));
 
   const [month, setMonth] = useState('');
 
@@ -57,7 +60,7 @@ export default function Student() {
   }));
 
   const optPlan = plan.map(plans => ({
-    value: `${plans.price}`,
+    value: `${plans.id}`,
     label: `${plans.title}`,
     ...plans,
   }));
@@ -65,6 +68,7 @@ export default function Student() {
   function calcEndDate(date) {
     setStartDate(date);
     setShowEndDate(format(addDays(date, month * 30), 'dd/MM/yyyy'));
+    setEndDate(startOfDay(addDays(date, month * 30)));
   }
 
   function calcPrice(value) {
@@ -73,37 +77,46 @@ export default function Student() {
     // setPlanId(value.id);
   }
 
-  async function handleSubmit(data) {
-    console.tron.log(data);
+  const dispatch = useDispatch();
+
+  function handleSubmit(data) {
+    dispatch(registerRegistrationRequest(data));
   }
 
   return (
     <Container>
       <Form onSubmit={handleSubmit}>
         <Select
-          name="optsStudent"
+          name="student_id"
           isSearchable
           options={optStudent}
           placeholder="Selecione..."
         />
         <div>
           <Select
-            name="optsPlan"
+            name="plan_id"
             options={optPlan}
             isSearchable={false}
             placeholder="Selecione..."
             onChange={value => calcPrice(value)}
           />
           <DatePicker
-            name="date"
+            name="start_date"
             dateFormat="dd/MM/yyyy"
             locale={pt}
             onChange={date => calcEndDate(date)}
             selected={startDate}
             value={this}
           />
-          <Input name="end_date" value={showEndDate} />
-          <Input name="total" value={price} />
+          <DatePicker
+            name="end_date"
+            dateFormat="dd/MM/yyyy"
+            locale={pt}
+            onChange={date => calcEndDate(date)}
+            selected={endDate}
+          />
+
+          <Input name="price" value={price} />
         </div>
         <button type="submit">Enviar</button>
       </Form>

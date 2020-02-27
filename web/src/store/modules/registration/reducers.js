@@ -1,4 +1,5 @@
 import produce from 'immer';
+
 import history from '~/services/history';
 
 const INITIAL_STATE = {};

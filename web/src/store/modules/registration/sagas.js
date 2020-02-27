@@ -1,17 +1,12 @@
 import { all, call, takeLatest } from 'redux-saga/effects';
+
 import api from '~/services/api';
 import history from '~/services/history';
 
 export function* registerRegistration({ payload }) {
-  const { student_id, plan_id, start_date, end_date, price } = payload;
+  const { data } = payload;
 
-  yield call(api.post, 'registration', {
-    student_id,
-    plan_id,
-    start_date,
-    end_date,
-    price,
-  });
+  yield call(api.post, 'registration', data);
 
   console.tron.log('Matrícula cadastrada com sucesso');
 
